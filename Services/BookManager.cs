@@ -20,27 +20,60 @@ namespace Services
 
         public Book CreateOneBook(Book book)
         {
-            throw new NotImplementedException();
+            if (book is null)
+            {
+                throw new ArgumentNullException(nameof(book));
+            }
+            _manager.Book.CreateOneBook(book);
+            _manager.save();
+            return book;
         }
 
-        public void DeleteOneBook(int id, Book book)
+        public void DeleteOneBook(int id, bool trackChanges )
         {
-            throw new NotImplementedException();
+            var entity = _manager.Book.GetOneBookById(id,trackChanges);
+            if (entity is null)
+            {
+                throw new Exception($"Book with id:{id} could not fount.");
+            }
+            _manager.Book.DeleteOneBook(entity);
+            _manager.save(); 
+
         }
 
         public IEnumerable<Book> GetAllBooks(bool trackChanges)
         {
-            throw new NotImplementedException();
+            return _manager.Book.GetAllBooks(trackChanges);
         }
 
         public Book GetOneBookById(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            return _manager.Book.GetOneBookById(id, trackChanges);
         }
 
-        public void UpdateOneBook(int id, Book book)
+        public void UpdateOneBook(int id, Book book,bool trackChanges)
         {
-            throw new NotImplementedException();
+            var entity = _manager.Book.GetOneBookById(id, trackChanges);
+            if (entity is null)
+            {
+                throw new Exception($"Book with id:{id} could not fount.");
+            }
+
+            if (book is null)
+            {
+                throw new ArgumentNullException(nameof(book));
+            }
+
+            entity.Title = book.Title;
+            entity.Price = book.Price;
+
+            _manager.Book.Update(entity);
+            _manager.save();
+
+
+
+
+
         }
     }
 }

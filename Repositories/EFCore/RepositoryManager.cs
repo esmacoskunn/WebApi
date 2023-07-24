@@ -17,7 +17,7 @@ namespace Repositories.EFCore
 
         public RepositoryManager(RepositoryContext context)
         {
-            _context = context;
+            _context = context; 
             //_bookRepository = new Lazy<IBookRepository>(() => new BookRepository(_context));
             _bookRepository = new BookRepository(_context);
         }
@@ -27,6 +27,7 @@ namespace Repositories.EFCore
 
         public void save()
         {
+
             _context.SaveChanges();
         }
     }

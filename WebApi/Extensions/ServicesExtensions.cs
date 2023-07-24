@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Repositories.Contracts;
 using Repositories.EFCore;
+using Services;
+using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +27,14 @@ namespace WebApi.Extensions
              services.AddScoped<IRepositoryManager, RepositoryManager>(); //IRepositoryManager, RepositoryManager bu iki yapıyı eşleştirir. eklemi işlemi IServiceCollection ait oan AddScoped bununla yapıyoruz.
             //Bu şekilde, IServiceCollection üzerinde IRepositoryManager ve RepositoryManager hizmetlerini bildirerek ve DI konteynerine ekleyerek, bağımlılıkların çözülmesini ve haberleşmeyi sağlayabilirsiniz.
 
+           // Yukarıdaki kod bloğu, .NET Core tabanlı bir uygulamada IOC(Inversion of Control) prensibini ve Dependency Injection(Bağımlılık Enjeksiyonu) desenini kullanmıştır. Bu kod bloğu, bir IServiceCollection nesnesine IRepositoryManager arayüzünü RepositoryManager sınıfıyla ilişkilendirerek IOC kaydını yapmaktadır.
         }
 
 
-
+        public static void ConfigureServiceManagerr(this IServiceCollection services)
+        {
+            services.AddScoped<IServiceManager, ServiceManager>();
+        }
 
 
 

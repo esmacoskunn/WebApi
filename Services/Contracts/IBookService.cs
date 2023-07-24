@@ -12,8 +12,9 @@ namespace Services.Contracts
         IEnumerable<Book> GetAllBooks(bool trackChanges); //anlamlarına bak......
         Book GetOneBookById(int id, bool trackChanges);
         Book CreateOneBook(Book book);
-        void UpdateOneBook(int id, Book book);
-        void DeleteOneBook(int id, Book book);
+        void UpdateOneBook(int id, Book book,bool trackChanges);
+        void DeleteOneBook(int id, bool trackChanges);
+
 
     }
 }

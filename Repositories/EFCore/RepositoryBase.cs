@@ -22,7 +22,7 @@ namespace Repositories.EFCore
 
         public void Create(T entitiy) => _context.Set<T>().Add(entitiy); //buraddaki generic yapılar RepositoryBase geldi. veri tabanı bağlantısı RepositoryContext den geldi.
 
-        public void Delete(T entitiy) => _context.Set<T>().Remove(entitiy);
+        public void Delete(T entitiy) => _context.Set<T>().Remove(entitiy); //buralara değer gelicek.başka yerlerden.
 
         public IQueryable<T> FindAll(bool trackChanges) =>
             !trackChanges ?

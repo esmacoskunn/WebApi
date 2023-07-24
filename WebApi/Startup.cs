@@ -31,8 +31,11 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureServiceManagerr();
             services.ConfigureRepositoryManager();
-            services.AddControllers();
+            services.AddControllers()
+                .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly); //niye ekledim bak.......
+                
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApi", Version = "v1" });
