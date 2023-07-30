@@ -13,13 +13,15 @@ namespace Repositories.EFCore
         //private readonly Lazy<IBookRepository> _bookRepository;
         private readonly IBookRepository _bookRepository;
 
-
+      //  Bu genişletme yöntemi, IRepositoryManager ayrılan projedeki servislerin yönetimini elde etmek üzere eklendiği ve yapılandırıldığı anlamında gelir.Bu sayede IRepositoryManager arayüzü üzerinden tanımlanmış metotlar ve özellikler, RepositoryManager sınıfı üzerinden gerçekleştirilmiş ve proje içinde kullanılabilir hale gelmiş olacaktır.
 
         public RepositoryManager(RepositoryContext context)
         {
             _context = context; 
             //_bookRepository = new Lazy<IBookRepository>(() => new BookRepository(_context));
             _bookRepository = new BookRepository(_context);
+
+
         }
 
         public IBookRepository Book => _bookRepository;

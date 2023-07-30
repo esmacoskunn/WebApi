@@ -18,7 +18,7 @@ namespace Presentation.Controllers
 
         private readonly IServiceManager _manager;
 
-        public BooksController(IServiceManager manager)
+        public BooksController(IServiceManager manager)//burasıda ıBOOKservice içindeki delrei alıyor
         {
             _manager = manager;
         }
@@ -106,7 +106,6 @@ namespace Presentation.Controllers
             try
             {
 
-
                 _manager.BookService.DeleteOneBook(id, false);
                 return NoContent();
 
@@ -117,9 +116,6 @@ namespace Presentation.Controllers
                 throw new Exception(ex.Message);
             }
         }
-
-
-
         [HttpPatch("{id:int}")]
         public IActionResult PartiallyUpdateOneBook([FromRoute(Name = "id")] int id,
           [FromBody] JsonPatchDocument<Book> bookPatch)

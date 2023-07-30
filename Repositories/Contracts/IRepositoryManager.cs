@@ -11,6 +11,7 @@ namespace Repositories.Contracts
         IBookRepository Book { get; }  //bu verilere erşir book ile  diğeri ise verileri kaydetme özelliğine sahip olucak save ile
         void save();
 
+
          
     }
 }

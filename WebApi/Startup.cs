@@ -26,7 +26,7 @@ namespace WebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
+        } 
 
         public IConfiguration Configuration { get; }
        
@@ -36,6 +36,8 @@ namespace WebApi
             services.ConfigureLoggerService();
             services.ConfigureServiceManagerr();
             services.ConfigureRepositoryManager();
+            services.AddAutoMapper(typeof(Program));
+          
             services.AddControllers()
                 .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly); //niye ekledim bak.......
                 
